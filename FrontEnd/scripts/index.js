@@ -172,11 +172,14 @@ async function loadModalGallery() {
       });
 
       if (res.ok) {
-        item.remove(); // Supprime du DOM
+        item.remove(); // Supprime du DOM immédiatement sans recharger la page
       } else {
         alert("Erreur lors de la suppression");
       }
     });
+
+allWorks = allWorks.filter(w => w.id !== work.id);
+displayWorks(allWorks);
 
     container.appendChild(item);
   });
@@ -185,3 +188,46 @@ document.querySelector("#btn-modifier").addEventListener("click", () => {
   document.getElementById("modal").classList.remove("hidden");
   loadModalGallery(); // Charge la galerie dans la modale
 });
+
+const formAddPhoto = document.getElementById("form-add-photo");
+
+formAddPhoto.addEventListener("submit", async (e) => {
+  e.preventDefault(); // Empêche le rechargement du formulaire
+
+  const imageInput = document.getElementById("photo");
+  const titleInput = document.getElementById("title");
+  const categorySelect = document.getElementById("category");
+
+  // Vérification des champs
+  if (!imageInput.files[0] || !titleInput.value || !categorySelect.value) {
+    alert("Veuillez remplir tous les champs.");
+    return;
+  }
+
+  const formData = new FormData();
+  formData.append("image", imageInput.files[0]);
+  formData.append("title", titleInput.value);
+  formData.append("category", categorySelect.value);
+
+
+  try {
+    const response = await fetch("http://localhost:5678/api/works", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+      body: formData,
+    });
+
+    if (response.ok) {
+      alert("Projet ajouté avec succès !");
+      // Recharge la page pour afficher le nouveau projet
+      window.location.reload();
+    } else {
+      alert("Erreur lors de l'envoi du projet.");
+    }
+  } catch (error) {
+    console.error("Erreur lors de l'ajout :", error);
+  }
+});
+
