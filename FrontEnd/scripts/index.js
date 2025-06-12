@@ -198,11 +198,22 @@ formAddPhoto.addEventListener("submit", async (e) => {
   const titleInput = document.getElementById("title");
   const categorySelect = document.getElementById("category");
 
-  // Vérification des champs
-  if (!imageInput.files[0] || !titleInput.value || !categorySelect.value) {
-    alert("Veuillez remplir tous les champs.");
-    return;
-  }
+ // Validation précise
+if (!imageInput.files[0]) {
+  alert("❌ Veuillez sélectionner une image.");
+  return;
+}
+
+if (titleInput.value.trim() === "") {
+  alert("❌ Veuillez entrer un titre.");
+  return;
+}
+
+if (categorySelect.value === "") {
+  alert("❌ Veuillez choisir une catégorie.");
+  return;
+}
+
 
   const formData = new FormData();
   formData.append("image", imageInput.files[0]);
