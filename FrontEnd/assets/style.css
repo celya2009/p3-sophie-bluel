@@ -387,3 +387,151 @@ footer nav ul {
 #open-add-photo:hover {
   background-color: #17a589; /* Un vert plus foncé au survol */
 }
+
+.modal-back {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #000;
+}
+
+form select {
+  height: 50px;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 16px;
+}
+
+/* Conteneur de la modale */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 10px;
+  width: 600px;
+  max-width: 90%;
+  padding: 30px;
+  position: relative;
+}
+
+/* Bouton de fermeture (X) */
+#modal-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Titre de la modale */
+.modal-content h2 {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 30px;
+  color: #000;
+}
+
+/* Bouton retour (flèche) */
+.modal-back {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Zone d'import d'image */
+.upload-photo-zone {
+  background-color: #e8f1f7;
+  border-radius: 5px;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.upload-photo-zone i {
+  font-size: 50px;
+  color: #cbd6dc;
+  margin-bottom: 10px;
+}
+
+.upload-photo-zone input[type="file"] {
+  display: none;
+}
+
+.btn-photo-upload {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #cbd6dc;
+  color: #306685;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.upload-photo-zone p {
+  font-size: 12px;
+  color: #444;
+  margin-top: 10px;
+}
+
+/* Champs texte et sélection */
+#form-add-photo label {
+  display: block;
+  font-weight: bold;
+  margin: 15px 0 5px;
+}
+
+#form-add-photo input[type="text"],
+#form-add-photo select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Ligne de séparation */
+#form-add-photo hr {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+  margin: 30px 0;
+}
+
+/* Bouton Valider */
+.btn-valider {
+  background-color: grey;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 40px;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+.btn-valider:hover {
+  background-color: gray;
+}

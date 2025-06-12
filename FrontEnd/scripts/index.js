@@ -173,17 +173,17 @@ async function loadModalGallery() {
 
       if (res.ok) {
         item.remove(); // Supprime du DOM immédiatement sans recharger la page
+     allWorks = allWorks.filter(w => w.id !== work.id);
+     displayWorks(allWorks);
       } else {
         alert("Erreur lors de la suppression");
       }
     });
 
-allWorks = allWorks.filter(w => w.id !== work.id);
-displayWorks(allWorks);
-
     container.appendChild(item);
   });
 }
+
 document.querySelector("#btn-modifier").addEventListener("click", () => {
   document.getElementById("modal").classList.remove("hidden");
   loadModalGallery(); // Charge la galerie dans la modale
