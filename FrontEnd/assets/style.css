@@ -535,3 +535,8 @@ form select {
 .btn-valider:hover {
   background-color: gray;
 }
+
+.form-error {
+  font-weight: bold;
+  color: red;
+}

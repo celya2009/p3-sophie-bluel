@@ -242,3 +242,54 @@ if (categorySelect.value === "") {
   }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const form = document.getElementById("form-add-photo");
+  const errorBox = document.getElementById("form-error");
+
+  form.addEventListener("submit", function (e) {
+    e.preventDefault(); // Empêche l'envoi du formulaire
+
+    // On efface les erreurs précédentes
+    errorBox.textContent = "";
+
+    const photo = document.getElementById("photo").files[0];
+    const title = document.getElementById("title").value.trim();
+    const category = document.getElementById("category").value;
+
+    let errors = [];
+
+    // Vérifications
+    if (!photo) {
+      errors.push("Veuillez ajouter une photo.");
+    } else if (photo.size > 4 * 1024 * 1024) {
+      errors.push("La photo dépasse 4 Mo.");
+    }
+
+    if (!title) {
+      errors.push("Le titre est obligatoire.");
+    }
+
+    if (!category) {
+      errors.push("Veuillez choisir une catégorie.");
+    }
+
+    if (errors.length > 0) {
+      // Affiche les erreurs
+      errorBox.textContent = errors.join(" ");
+      return;
+    }
+
+    // Si tout est bon, tu peux envoyer les données ici avec fetch ou autre
+    console.log("Formulaire valide, envoi possible.");
+
+    // Si tu veux envoyer les données :
+    // const formData = new FormData(form);
+    // fetch('TON_ENDPOINT_API', {
+    //   method: 'POST',
+    //   body: formData
+    // })
+    // .then(res => res.json())
+    // .then(data => { ... })
+    // .catch(err => console.error("Erreur :", err));
+  });
+});
