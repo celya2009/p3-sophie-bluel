@@ -191,35 +191,47 @@ document.querySelector("#btn-modifier").addEventListener("click", () => {
 
 const formAddPhoto = document.getElementById("form-add-photo");
 
-formAddPhoto.addEventListener("submit", async (e) => {
-  e.preventDefault(); // Empêche le rechargement du formulaire
+formAddPhoto.addEventListener("submit", async function (e) {
+  e.preventDefault();
 
   const imageInput = document.getElementById("photo");
   const titleInput = document.getElementById("title");
   const categorySelect = document.getElementById("category");
+  const errorBox = document.getElementById("form-error");
 
- // Validation précise
-if (!imageInput.files[0]) {
-  alert("❌ Veuillez sélectionner une image.");
-  return;
-}
+  // Réinitialisation du message d’erreur
+  errorBox.textContent = "";
 
-if (titleInput.value.trim() === "") {
-  alert("❌ Veuillez entrer un titre.");
-  return;
-}
+  const photo = imageInput.files[0];
+  const title = titleInput.value.trim();
+  const category = categorySelect.value;
 
-if (categorySelect.value === "") {
-  alert("❌ Veuillez choisir une catégorie.");
-  return;
-}
+  const errors = [];
 
+  if (!photo) {
+    errors.push("Veuillez ajouter une photo.");
+  } else if (photo.size > 4 * 1024 * 1024) {
+    errors.push("La photo dépasse 4 Mo.");
+  }
 
+  if (!title) {
+    errors.push("Le titre est obligatoire.");
+  }
+
+  if (!category) {
+    errors.push("Veuillez choisir une catégorie.");
+  }
+
+  if (errors.length > 0) {
+    errorBox.textContent = errors.join(" ");
+    return;
+  }
+
+  // Envoi du formulaire
   const formData = new FormData();
-  formData.append("image", imageInput.files[0]);
-  formData.append("title", titleInput.value);
-  formData.append("category", categorySelect.value);
-
+  formData.append("image", photo);
+  formData.append("title", title);
+  formData.append("category", category);
 
   try {
     const response = await fetch("http://localhost:5678/api/works", {
@@ -231,16 +243,26 @@ if (categorySelect.value === "") {
     });
 
     if (response.ok) {
-      alert("Projet ajouté avec succès !");
-      // Recharge la page pour afficher le nouveau projet
-      window.location.reload();
+      const newWork = await response.json();
+      allWorks.push(newWork); // Mets à jour la liste
+      displayWorks(allWorks); // Rafraîchis la galerie
+      loadModalGallery(); // Mets à jour la modale
+
+      // Réinitialise le formulaire
+      formAddPhoto.reset();
+      errorBox.textContent = "";
+      alert("✅ Projet ajouté avec succès !");
+      addPhotoView.classList.add("hidden");
+      galleryView.classList.remove("hidden");
     } else {
-      alert("Erreur lors de l'envoi du projet.");
+      errorBox.textContent = "Erreur lors de l'envoi du projet.";
     }
-  } catch (error) {
-    console.error("Erreur lors de l'ajout :", error);
+  } catch (err) {
+    console.error("Erreur réseau :", err);
+    errorBox.textContent = "Erreur de connexion au serveur.";
   }
 });
+
 
 document.addEventListener("DOMContentLoaded", function () {
   const form = document.getElementById("form-add-photo");
