@@ -23,6 +23,8 @@ form.addEventListener("submit", async (e) => {
     });
 
     const data = await response.json();
+    console.log("Réponse serveur login:", data);
+
 
     if (response.ok) {
       // Stockage du token

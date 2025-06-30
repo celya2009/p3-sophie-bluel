@@ -1,0 +1,526 @@
+/* http://meyerweb.com/eric/tools/css/reset/
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/** end reset css**/
+body {
+	max-width: 1140px;
+	margin:auto;
+	font-family: 'Work Sans';
+	font-size: 14px;
+}
+header {
+	display: flex;
+	justify-content: space-between;
+	margin: 50px 0;
+}
+section {
+	margin: 50px 0;
+}
+
+h1{
+	display: flex;
+	flex-direction: column;
+	font-family: 'Syne';
+	font-size: 22px;
+	font-weight: 800;
+	color: #B1663C;
+}
+
+h1 > span {
+	font-family: 'Work Sans';
+	font-size:10px;
+	letter-spacing: 0.1em;
+}
+
+h2{
+	font-family: 'Syne';
+	font-weight: 700;
+	font-size: 30px;
+	color: #1D6154;
+}
+nav ul {
+	display: flex;
+	align-items: center;
+	list-style-type: none;
+}
+nav li {
+	padding: 0 10px;
+	font-size: 1.2em;
+}
+
+li:hover {
+	color: #B1663C;
+}
+#introduction {
+	display: flex;
+	align-items: center;
+}
+#introduction figure {
+	flex: 1;
+}
+#introduction img {
+	display: block;
+	margin: auto;
+	width: 80%;
+}
+
+#introduction article {
+	flex: 1;
+}
+#introduction h2 {
+	margin-bottom: 1em;
+}
+
+#introduction p {
+	margin-bottom: 0.5em;
+}
+#portfolio h2 {
+	text-align: center;
+	margin-bottom: 1em;
+}
+.gallery {
+	width: 100%;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	grid-column-gap: 20px;
+	grid-row-gap: 20px;
+}
+
+.gallery img {
+	width: 100%;
+}
+
+#contact {
+	width: 50%;
+margin: auto;
+}
+#contact > * {
+	text-align: center;
+
+}
+#contact h2{
+	text-align: center;
+	margin-bottom: 20px;
+	color: #1D6154;
+}
+
+#contact p{
+	font-size: 1.1em;
+	margin-bottom: 1em;
+	color: #333;
+}
+
+#contact form {
+	text-align: left;
+	margin-top:30px;
+	display: flex;
+	flex-direction: column;
+}
+
+#contact input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#contact label {
+	margin: 2em 0 1em 0;
+}
+#contact textarea {
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
+input[type="submit"]{
+	font-family: 'Syne';
+	font-weight: 700;
+	color: white;
+	background-color: #1D6154;
+	margin : 2em auto ;
+	width: 180px;
+	text-align: center;
+	border-radius: 60px ;
+}
+
+footer nav ul {
+	display: flex;
+	justify-content: flex-end;
+	margin: 2em
+}
+
+.filters {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  flex-wrap: wrap;
+}
+
+.filters button {
+  padding: 8px 16px;
+  border: 1px solid #1D6154;
+  background-color: white;
+  color: #1D6154;
+  border-radius: 25px;
+  font-family: 'Work Sans', sans-serif;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.filters button:hover {
+  background-color: #1D6154;
+  color: white;
+}
+
+.filters button.active {
+  background-color: #1D6154;
+  color: white;
+}
+
+#login-container {
+  width: 100%;
+  max-width: 400px;
+  margin: 100px auto;
+  font-family: 'Work Sans', sans-serif;
+  padding: 20px;
+  text-align: center;
+}
+
+#login-container h2 {
+  font-size: 2em;
+  color: #1D6154;
+  margin-bottom: 30px;
+}
+
+#login-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#login-container input[type="email"],
+#login-container input[type="password"] {
+  padding: 10px;
+  font-size: 1em;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0,0,0,0.1);
+}
+
+#login-container input[type="submit"] {
+  background-color: #1D6154;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 15px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.forgot-password {
+  margin-top: 10px;
+  color: #1D6154;
+  font-size: 0.9em;
+}
+
+.hidden {
+  display: none !important; 
+}
+
+.modal {
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: white;
+  padding: 1rem;
+  max-width: 500px;
+  width: 90%;
+  border-radius: 8px;
+  position: relative;
+}
+
+#modal-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.mes-projets-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 2em;
+}
+
+.mes-projets-header h2 {
+  margin: 0; /* ⬅️ Supprime les marges par défaut du h2 */
+}
+
+#portfolio h2 {
+  margin: 0; /* Supprime la marge par défaut */
+}
+
+#btn-modifier {
+  background: none;
+  border: none;
+  color: black;
+  font-size: 1em;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.modal-gallery-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+#modal-gallery h2 {
+  color: black;
+  text-align: center;
+  font-size: 18px; /* Tu peux ajuster ici */
+  margin-bottom: 20px;
+}
+
+.gallery-item {
+  position: relative;
+  width: 100px;
+  height: 130px;
+}
+
+.gallery-item img {
+  width: 100%;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.btn-delete {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  background-color: black;
+  border: none;
+  
+  padding: 4px;
+  cursor: pointer;
+}
+
+.btn-delete i {
+  color: white;
+}
+
+#open-add-photo {
+  display: block;
+  margin: 0 auto;
+  background-color: #1D6154; /* Vert turquoise - tu peux changer */
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#open-add-photo:hover {
+  background-color: #17a589; /* Un vert plus foncé au survol */
+}
+
+.modal-back {
+  position: absolute;
+  top: 30px;
+  left: 30px;
+  cursor: pointer;
+  font-size: 20px;
+  color: #000;
+}
+
+form select {
+  height: 50px;
+  border-radius: 5px;
+  padding: 0 10px;
+  font-size: 16px;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: white;
+  border-radius: 10px;
+  width: 600px;
+  max-width: 90%;
+  padding: 30px;
+  position: relative;
+}
+
+/* Bouton de fermeture (X) */
+#modal-close {
+  position: absolute;
+  top: 20px;
+  right: 25px;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+}
+
+/* Titre de la modale */
+.modal-content h2 {
+  text-align: center;
+  font-size: 26px;
+  margin-bottom: 30px;
+  color: #000;
+}
+
+/* Bouton retour (flèche) */
+.modal-back {
+  position: absolute;
+  top: 20px;
+  left: 25px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* Zone d'import d'image */
+.upload-photo-zone {
+  background-color: #e8f1f7;
+  border-radius: 5px;
+  text-align: center;
+  padding: 20px;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.upload-photo-zone i {
+  font-size: 50px;
+  color: #cbd6dc;
+  margin-bottom: 10px;
+}
+
+.upload-photo-zone input[type="file"] {
+  display: none;
+}
+
+.btn-photo-upload {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #cbd6dc;
+  color: #306685;
+  font-weight: bold;
+  border-radius: 50px;
+  cursor: pointer;
+}
+
+.upload-photo-zone p {
+  font-size: 12px;
+  color: #444;
+  margin-top: 10px;
+}
+
+/* Champs texte et sélection */
+#form-add-photo label {
+  display: block;
+  font-weight: bold;
+  margin: 15px 0 5px;
+}
+
+#form-add-photo input[type="text"],
+#form-add-photo select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Ligne de séparation */
+#form-add-photo hr {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+  margin: 30px 0;
+}
+
+/* Bouton Valider */
+.btn-valider {
+  background-color: grey;
+  color: white;
+  border: none;
+  border-radius: 30px;
+  padding: 10px 40px;
+  font-size: 16px;
+  cursor: pointer;
+  display: block;
+  margin: 0 auto;
+}
+
+.btn-valider:hover {
+  background-color: gray;
+}
+
+.form-error {
+  font-weight: bold;
+  color: red;
+}
